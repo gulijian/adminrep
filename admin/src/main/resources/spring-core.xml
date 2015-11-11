@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<!-- 加载配置文件 -->
+	<context:property-placeholder location="classpath:pm.properties"/>
+
+
+	<!-- 包自动扫描 不扫描Controller注解-->
+	<context:component-scan base-package="com.gu">
+		<context:exclude-filter type="annotation"
+								expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		  init-method="init" destroy-method="close">
+	  <property name="driverClassName" value="${jdbc.mysql.driver}" />
+	  <property name="url" value="${jdbc.mysql.url}" />
+      <property name="username" value="${jdbc.mysql.username}" />
+      <property name="password" value="${jdbc.mysql.password}" />
+
+      <!-- 配置初始化大小、最小、最大 -->
+      <property name="initialSize" value="${jdbc.pool.init}" />
+      <property name="minIdle" value="${jdbc.pool.minIdle}" />
+      <property name="maxActive" value="${jdbc.pool.maxActive}" />
+	</bean>
+	
+	<!-- 配置事物管理类 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- 开启注解式事物扫描 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- 缓存管理器 使用Ehcache实现 -->
+	<bean id="ehCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:cache/ehcache.xml"/>
+	</bean>
+	
+	<!-- 产生sqlsessionfactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageHelper">
+					<property name="properties">
+						<value>
+							dialect=mysql
+						</value>
+					</property>
+				</bean>
+			</array>
+		</property>
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:com/gu/dao/sqlmap/*Mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 自动扫描mapper接口-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.gu.dao.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+	
+</beans>

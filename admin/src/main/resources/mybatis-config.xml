@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration  
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	<!-- CDATA 部分由 "<![CDATA[" 开始，由 "]]>" 结束： -->
+	<!-- 在 XML 中有 5 个预定义的实体引用                                        -->
+	<!-- &lt;	<	小于   less than                -->
+ 	<!-- &gt;	>	大于   greater than             -->
+	<!-- &amp;	&	和号							 -->
+	<!-- &apos;	'	单引号						 -->
+	<!-- &quot;	"	双引号                                        	     -->
+	
+	<settings>  
+        <setting name="logImpl" value="LOG4J" />  
+    </settings>
+	
+</configuration>
