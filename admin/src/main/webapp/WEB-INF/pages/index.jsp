@@ -12,7 +12,7 @@
 	<body class="no-skin">
 		<!-- #section:basics/navbar.layout -->
 		<div id="navbar" class="navbar navbar-default">
-			<%@include file="/WEB-INF/pages/include/menu.jsp" %>
+ 		 	<%@include file="/WEB-INF/pages/include/head.jsp" %>  
 		</div>
 		<!-- /section:basics/navbar.layout -->
 		<div class="main-container" id="main-container">
@@ -22,7 +22,7 @@
 
 			<!-- #section:basics/sidebar -->
 			<div id="sidebar" class="sidebar responsive">
-				<%@include file="/WEB-INF/pages/include/head.jsp" %>
+				<%@include file="/WEB-INF/pages/include/menu.jsp" %>
 			</div>
 
 			<!-- /section:basics/sidebar -->
@@ -98,7 +98,7 @@
 		
 		<script type="text/javascript">
 			$(function(){
-				alert("1111");
+				
 				
 			});
 			

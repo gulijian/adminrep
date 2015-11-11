@@ -19,7 +19,7 @@
 	<div class="navbar-header pull-left">
 		<!-- #section:basics/navbar.layout.brand -->
 		<a href="#" class="navbar-brand"> <small> <i
-				class="fa fa-leaf"></i> Ace Admin
+				class="fa fa-leaf"></i> Admin
 		</small>
 		</a>
 
@@ -165,7 +165,7 @@
 					<li class="dropdown-content">
 						<ul class="dropdown-menu dropdown-navbar">
 							<li><a href="#" class="clearfix"> <img
-									src="../resources/assets/avatars/avatar.png" class="msg-photo"
+									src="${ctxStatic}/assets/avatars/avatar.png" class="msg-photo"
 									alt="Alex's Avatar" /> <span class="msg-body"> <span
 										class="msg-title"> <span class="blue">Alex:</span> Ciao
 											sociis natoque penatibus et auctor ...
@@ -176,7 +176,7 @@
 							</a></li>
 
 							<li><a href="#" class="clearfix"> <img
-									src="../resources/assets/avatars/avatar3.png" class="msg-photo"
+									src="${ctxStatic}/assets/avatars/avatar3.png" class="msg-photo"
 									alt="Susan's Avatar" /> <span class="msg-body"> <span
 										class="msg-title"> <span class="blue">Susan:</span>
 											Vestibulum id ligula porta felis euismod ...
@@ -188,7 +188,7 @@
 							</a></li>
 
 							<li><a href="#" class="clearfix"> <img
-									src="../resources/assets/avatars/avatar4.png" class="msg-photo"
+									src="${ctxStatic}/assets/avatars/avatar4.png" class="msg-photo"
 									alt="Bob's Avatar" /> <span class="msg-body"> <span
 										class="msg-title"> <span class="blue">Bob:</span>
 											Nullam quis risus eget urna mollis ornare ...
@@ -199,7 +199,7 @@
 							</a></li>
 
 							<li><a href="#" class="clearfix"> <img
-									src="../resources/assets/avatars/avatar2.png" class="msg-photo"
+									src="${ctxStatic}/assets/avatars/avatar2.png" class="msg-photo"
 									alt="Kate's Avatar" /> <span class="msg-body"> <span
 										class="msg-title"> <span class="blue">Kate:</span> Ciao
 											sociis natoque eget urna mollis ornare ...
@@ -210,7 +210,7 @@
 							</a></li>
 
 							<li><a href="#" class="clearfix"> <img
-									src="../resources/assets/avatars/avatar5.png" class="msg-photo"
+									src="${ctxStatic}/assets/avatars/avatar5.png" class="msg-photo"
 									alt="Fred's Avatar" /> <span class="msg-body"> <span
 										class="msg-title"> <span class="blue">Fred:</span>
 											Vestibulum id penatibus et auctor ...
@@ -230,7 +230,7 @@
 			<!-- #section:basics/navbar.user_menu -->
 			<li class="light-blue"><a data-toggle="dropdown" href="#"
 				class="dropdown-toggle"> <img class="nav-user-photo"
-					src="../resources/assets/avatars/user.jpg" alt="Jason's Photo" />
+					src="${ctxStatic}/assets/avatars/user.jpg" alt="Jason's Photo" />
 					<span class="user-info"> <small>Welcome,</small> Jason
 				</span> <i class="ace-icon fa fa-caret-down"></i>
 			</a>
