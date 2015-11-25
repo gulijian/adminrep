@@ -9,8 +9,13 @@ import com.gu.core.action.BaseAction;
 @Controller("loginAction")
 public class LoginAction extends BaseAction{
 	
+	@RequestMapping("/login")
+	public String login(){
+		return "login";
+	}
+	
 	@RequestMapping("/index")
-	public String test(){
+	public String index(){
 		return "index";
 	}
 	
