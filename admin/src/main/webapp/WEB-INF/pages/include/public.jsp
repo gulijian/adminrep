@@ -1,4 +1,4 @@
-<%@ page pageEncoding="utf-8" language="java"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit">
 
@@ -10,8 +10,6 @@
 <!-- ace styles -->
 <link rel="stylesheet" href="${ctxStatic}/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 <script src="${ctxStatic}/assets/js/ace-extra.js"></script>
-
-
 
 <!-- basic scripts -->
 <!--[if !IE]> -->

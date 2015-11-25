@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<graph caption="我是标题" xAxisName="月份" yAxisName="utins" showNames="1" decimalPrecision="0" formatNumberScale="0">
+	<set name="一月" value="798" color="AFD8F8"/>
+	<set name="二月" value="798" color="AFD8F8"/>
+	<set name="三月" value="798" color="8BBA00"/>
+	<set name="四月" value="798" color="D64646"/>
+	<set name="五月" value="798" color="AFD8F8"/>
+	<set name="六月" value="798" color="588526"/>
+	<set name="七月" value="798" color="F6BD0F"/>
+	<set name="八月" value="798" color="AFD8F8"/>
+	<set name="九月" value="798" color="008E8E"/>
+	<set name="十3月" value="798" color="9D080D"/>
+	<set name="十一月" value="798" color="FF8E46"/>
+	<set name="十二月" value="798" color="AFD8F8"/>
+</graph>
