@@ -3,7 +3,7 @@
 <!DOCTYPE html">
 <html>
   	<head>
-    	<title>fusionchart</title>
+    	<title>form</title>
     	<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta http-equiv="expires" content="0">    
@@ -11,8 +11,6 @@
 		<meta http-equiv="description" content="This is my page">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
    	 	<%@include file="/WEB-INF/pages/include/public.jsp" %>
-   	 	<script type="text/javascript" src="${ctxStatic}/fusionCharts/FusionCharts.js"></script>
-   	 	
 	</head>
 
 	<body class="no-skin">
@@ -69,9 +67,22 @@
 
 						<div class="row">
 							<div class="col-xs-12">
-								<!-- page content starts -->
-									<div id="chart_div" style="border:1px solid red; width:650px;height:400px;margin:10px auto;"></div>
-								<!-- page content ends -->
+								<!-- page content start  -->
+								<div class="alert alert-block alert-success">
+									<button type="button" class="close" data-dismiss="alert">
+										<i class="ace-icon fa fa-times"></i>
+									</button>
+
+									<i class="ace-icon fa fa-check green"></i>
+
+									Welcome to
+									<strong class="green">
+										Ace
+										<small>(v1.3.4)</small>
+									</strong>,
+											wwww
+								</div>
+								<!-- page content end  -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
@@ -88,11 +99,14 @@
 		</div><!-- /.main-container -->
 		
 		
+		
 		<script type="text/javascript">
-			var dataXml = "<?xml version='1.0' encoding='UTF-8' ?><graph caption='每月销售额柱形图' xAxisName='月份' yAxisName='Units' showNames='1' decimalPrecision='0' formatNumberScale='0'><set name='一月' value='462' color='AFD8F8' /><set name='二月' value='857' color='F6BD0F' /><set name='三月' value='671' color='8BBA00' /><set name='四月' value='494' color='FF8E46' /><set name='五月' value='761' color='008E8E' /><set name='六月' value='960' color='D64646' /><set name='七月' value='629' color='8E468E' /><set name='八月' value='622' color='588526' /><set name='九月' value='376' color='B3AA00' /><set name='十月' value='494' color='008ED6' /><set name='十一月' value='761' color='9D080D' /><set name='十二月' value='960' color='A186BE' /></graph>";
-			var myChart2 = new FusionCharts(basePath+"/static/fusionCharts/Pie3D.swf","chatPieId", "600","250");
-			myChart2.setDataXML(dataXml);
-			myChart2.render("chart_div");
+			$(function(){
+				
+				
+			});
+			
 		</script>
+		
 	</body>
 </html>

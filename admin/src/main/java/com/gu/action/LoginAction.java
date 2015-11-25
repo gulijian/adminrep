@@ -43,5 +43,8 @@ public class LoginAction extends BaseAction{
 	public String treeview(){
 		return "treeview";
 	}
-
+	@RequestMapping("/form")
+	public String form(){
+		return "form";
+	}
 }
