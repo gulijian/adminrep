@@ -16,5 +16,9 @@
 	<settings>  
         <setting name="logImpl" value="LOG4J" />  
     </settings>
+    
+    <typeAliases>
+    	<package name="com/gu/entity"/>
+    </typeAliases>
 	
 </configuration>
