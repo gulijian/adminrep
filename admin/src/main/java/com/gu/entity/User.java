@@ -15,8 +15,16 @@ public class User implements java.io.Serializable{
 	private Date createTime;// 创建时间
 	private List<Role> role = new ArrayList<Role>();
 	
+	public User() {
+		super();
+	}
 	
-	
+	public User(String account, String password) {
+		super();
+		this.account = account;
+		this.password = password;
+	}
+
 	public Integer getId() {
 		return id;
 	}

@@ -15,14 +15,13 @@ public class UserService extends BaseService<UserMapper, User>{
 	 * 方法名：queryExitUser
 	 * 创建人：gulj
 	 * 时间：2015年11月26日-下午3:14:02 
-	 * @param username
-	 * @param password
+	 * @param user
 	 * @return User
 	 * @exception 
 	 * @since  1.0.0
 	 */
-	public User queryExsitUser(String username,String password){
-		return mapper.queryExsitUser(username, password);
+	public User queryExsitUser(User user){
+		return mapper.queryExsitUser(user);
 	}
 	
 

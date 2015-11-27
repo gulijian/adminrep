@@ -1,5 +1,7 @@
 package com.gu.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.gu.core.service.BaseService;
@@ -17,11 +19,11 @@ public class RoleService extends BaseService<RoleMapper, Role>{
 	 * 创建人：gulj
 	 * 时间：2015年11月26日-下午3:40:24 
 	 * @param UserId
-	 * @return Role
+	 * @return List<Role>
 	 * @exception 
 	 * @since  1.0.0
 	 */
-	public Role queryRoleByUserId(Integer UserId){
+	public List<Role> queryRoleByUserId(Integer UserId){
 		return mapper.queryRoleByUserId(UserId);
 	}
 	

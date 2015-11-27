@@ -1,5 +1,7 @@
 package com.gu.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.gu.core.service.BaseService;
@@ -16,18 +18,12 @@ public class MenuService extends BaseService<MenuMapper, Menu>{
 	 * 创建人：gulj
 	 * 时间：2015年11月26日-下午3:31:54 
 	 * @param userId
-	 * @return Menu
+	 * @return List<Menu>
 	 * @exception 
 	 * @since  1.0.0
 	 */
-	public Menu queryMenuByUserId(Integer userId){
-		
-		
-		
-		
-		
-		
-		return null;
+	public List<Menu> queryMenuByUserId(Integer userId){
+		return mapper.queryMenuByUserId(userId);
 	}
 	
 	

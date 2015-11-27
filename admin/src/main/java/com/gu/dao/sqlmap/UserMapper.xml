@@ -9,10 +9,12 @@
 		create_time as createTime
 	</sql>
 
-	<select id="queryExsitUser" resultType="User">
+	<select id="queryExsitUser" parameterType="User" resultType="User">
 		select <include refid="userColumns"/>
 		from sys_user
-		where account = #{username} and password=#{password}
+		where account = #{account} and password=#{password}
 	</select>
+	
+	
     
 </mapper>

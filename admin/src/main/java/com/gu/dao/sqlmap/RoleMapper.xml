@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.gu.dao.mapper.RoleMapper">
-    
+	<sql id="roleColumns">
+		r.id id,
+		r.create_time createTime,
+		r.description description,
+		r.name name
+	</sql>
+    <select id="queryRoleByUserId" parameterType="int" resultType="Role">
+		select <include refid="roleColumns"/>
+		from sys_role r
+		left join sys_user_role ur on r.id = ur.role_id
+		left join sys_user u on ur.user_id = u.id
+		where u.id=#{id} 
+	</select>
 </mapper>

@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.gu.dao.mapper.MenuMapper">
+    <sql id="menuColomns">
+    	id  id,
+    	name name,
+    	url url,
+    	parent_id parentId,
+    	sort sort,
+    	icon icon,
+    	model model,
+    	method method,
+    	create_time createTime
+    </sql>
     
+    <select id="queryMenuByUserId" parameterType="int" resultType="Menu">
+    	select DISTINCT m.url,m.model,m.name,m.icon
+        from sys_menu m
+		LEFT JOIN sys_role_menu rm on rm.menu_id = m.id
+		LEFT JOIN sys_role r on r.id = rm.role_id
+		LEFT JOIN sys_user_role ur on ur.role_id = r.id
+		LEFT JOIN sys_user u on ur.user_id = u.id
+		where u.id=#{id}
+    </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.gu.dao.mapper;
 
+import java.util.List;
+
 import com.gu.core.dao.BaseMapper;
 import com.gu.entity.Role;
 
@@ -12,10 +14,10 @@ public interface RoleMapper extends BaseMapper<Role> {
 	 * 创建人：gulj
 	 * 时间：2015年11月26日-下午3:40:24 
 	 * @param UserId
-	 * @return Role
+	 * @return List<Role>
 	 * @exception 
 	 * @since  1.0.0
 	 */
-	public Role queryRoleByUserId(Integer UserId);
+	public List<Role> queryRoleByUserId(Integer UserId);
 
 }

@@ -11,12 +11,11 @@ public interface UserMapper extends BaseMapper<User> {
 	 * 方法名：queryExsitUser
 	 * 创建人：gulj
 	 * 时间：2015年11月26日-下午3:19:39 
-	 * @param username
-	 * @param password
+	 * @param user
 	 * @return User
 	 * @exception 
 	 * @since  1.0.0
 	 */
-	public User queryExsitUser(String username,String password);
+	public User queryExsitUser(User user);
 
 }
