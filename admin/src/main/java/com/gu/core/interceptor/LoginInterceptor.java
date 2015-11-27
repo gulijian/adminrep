@@ -36,14 +36,15 @@ public class LoginInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
 			Object obj) throws Exception {
 		 //请求的路径
-        String contextPath=request.getContextPath();
+		String contextPath=request.getContextPath();
         String  url=request.getServletPath().toString();
         HttpSession session = request.getSession();
+        System.out.println("loginInterceptor");
         User user = (User)session.getAttribute(Constant.USER_SESSION_KEY);
-        if(user == null){
-        	response.sendRedirect("sys/login");
+       /* if(user == null){
+        	response.sendRedirect("/login");
         	return false;
-        }
+        }*/
 		return true;
 	}
 

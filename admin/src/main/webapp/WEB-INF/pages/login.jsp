@@ -75,7 +75,6 @@
    			
    			
    			$("#btnLogin").click(function(){
-   				alert("ddd");
    				var username = $("#username").val();
 	   			var password = $("#password").val();
 	   			$.ajax({

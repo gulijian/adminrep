@@ -31,9 +31,10 @@ public class PermissionInterceptor implements HandlerInterceptor{
 	}
 
 	@Override
-	public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1,
-			Object arg2) throws Exception {
-		System.out.println("=======PermissionInterceptor=====");
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
+			Object obj) throws Exception {
+		//进行权限拦截
+		System.out.println("dddd");
 		return true;
 	}
 

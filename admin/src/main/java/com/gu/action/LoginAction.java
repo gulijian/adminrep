@@ -45,7 +45,8 @@ public class LoginAction extends BaseAction{
 		if(StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password)){
 			password = StringUtils.md5Base64(password);
 			//根据用户名和密码查询用户
-			User user = userService.queryExsitUser(username, password);
+			return "error";
+			/*User user = userService.queryExsitUser(username, password);
 			if(null != user){
 				//用户放入session
 				request.getSession().setAttribute(Constant.USER_SESSION_KEY, user);
@@ -58,7 +59,7 @@ public class LoginAction extends BaseAction{
 				return "index";
 			}else{
 				return "login";
-			}
+			}*/
 		}else{
 			return "login"; //用户名或者密码为空
 		}
@@ -67,6 +68,7 @@ public class LoginAction extends BaseAction{
 	
 	@RequestMapping("/index")
 	public String index(){
+		System.out.println("indexaction");
 		return "index";
 	}
 	
