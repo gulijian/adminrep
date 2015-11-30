@@ -89,6 +89,41 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+		
+		<!-- mail -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.5.3</version>
+		</dependency>
+		
+		<!-- sun.misc.BASE64Decoder 加密算法工具类-->
+		<dependency>
+			<groupId>sun-misc</groupId>
+			<artifactId>sun-misc</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<!-- ueditor 所见即所得富文本web编辑器-->
+		<dependency>
+			<groupId>ueditor</groupId>
+			<artifactId>ueditor</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<!--QRCode java生成二维码工具-->
+		<dependency>
+			<groupId>QRCode</groupId>
+			<artifactId>QRCode</artifactId>
+			<version>1.0</version>
+		</dependency>
+	
+		<!-- freemarker -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.21</version>
+		</dependency>
 
         <!--JSR303验证-->
         <dependency>
