@@ -59,7 +59,7 @@
    						</div>
    						<div class="row">
    							<div class="col-md-12">
-   						  	 	<button id="btnLogin" type="button"  class="btn btn-primary" >登&nbsp;陆</button>
+   						  	 	<button id="btnLogin" type="button" onclick="login()"  class="btn btn-primary" >登&nbsp;陆</button>
    						    </div>
    						</div>
 					</form>
@@ -72,28 +72,26 @@
 					login();
 				}
 			});
-   			
-   			
-   			$("#btnLogin").click(function(){
-   				var username = $("#username").val();
-	   			var password = $("#password").val();
-	   			$.ajax({
-	   				url:"${basePath}/sys/logined",
-	   				type:"post",
-	   				data:{"username":username,"password":password},
-	   				success:function(data){
-	   					alert(data);
-	   				},
-	   				error:function(){
-	   					
-	   				}
-	   			});
-   			});
-   				
-   			
-   			
    		});
    	
+   		function login(){
+			var username = $("#username").val();
+   			var password = $("#password").val();
+   			$.ajax({
+   				url:"${basePath}/logined",
+   				type:"post",
+   				data:{"username":username,"password":password},
+   				success:function(data){
+   					if(data == "null"){
+   						$(".msgTip").html("请输入用户名或者密码！");
+   					}else if(data == "error"){
+   						$(".msgTip").html("用户名或者密码不正确！");
+   					}else if(data == "success"){
+	   					window.location.href=adminPath+"/index";
+   					}
+   				}
+   			});
+		}
    		
    	</script>
   </body>

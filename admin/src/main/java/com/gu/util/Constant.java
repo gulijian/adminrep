@@ -7,13 +7,13 @@ package com.gu.util;
  * @version 1.0.0
  *
  */
-public class Constant {
+public  class Constant {
 
 	//当前用户
-	public final static String USER_SESSION_KEY="currentUser";
+	public final static String SESSION_USER_KEY="currentUser";
 	//菜单列表
-	public final static String MENU_SESSION_KEY="menuList";
+	public final static String SESSION_MENU_KEY="menuList";
 	//角色列表
-	public final static String Role_SESSIOIN_KEY="roleList";
+	public final static String SESSIOIN_ROLE_KEY="roleList";
 	
 }

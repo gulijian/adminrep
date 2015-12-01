@@ -26,36 +26,16 @@ public class BaseAction {
      */
     protected Logger logger = LoggerFactory.getLogger(getClass());
     
-//	【zb】用于测试
-	protected HttpServletRequest request;
-	protected HttpServletResponse response;
-	
-//	【zb】用于测试	
-	@ModelAttribute
-	public void setReqAndRes(HttpServletRequest request,HttpServletResponse response) {
-		this.request = request;
-		this.response = response;
-	} 
-    
-	/**
-	 * 得到session对象
-	 */
-	public static HttpSession getSession() {
-		HttpSession session = null;
-		try {
-			session = getRequest().getSession();
-		} catch (Exception e) {
-		}
-		return session;
-	} 
-
-	/**
-	 * 得到request对象
-	 */
-    public static HttpServletRequest getRequest() { 
-    	ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes(); 
-    	return attrs.getRequest(); 
-    }
+  	protected HttpServletResponse response;
+  	protected HttpServletRequest request;
+  	protected HttpSession session;
+  	
+  	@ModelAttribute  
+  	public void setReqAndRes(HttpServletRequest request, HttpServletResponse response,HttpSession session){  
+  	    this.response= response;  
+  	    this.request = request;
+  	    this.session = session;
+  	}
     
     /**	【zb】用于测试*/
 	public void outJSONData(Object obj){

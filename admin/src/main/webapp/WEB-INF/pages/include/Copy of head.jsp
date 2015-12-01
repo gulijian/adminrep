@@ -23,6 +23,12 @@
 				 <i class="fa fa-leaf"></i> Admin
 			</small>
 		</a>
+
+		<!-- /section:basics/navbar.layout.brand -->
+
+		<!-- #section:basics/navbar.toggle -->
+
+		<!-- /section:basics/navbar.toggle -->
 	</div>
 
 	<!-- #section:basics/navbar.dropdown -->

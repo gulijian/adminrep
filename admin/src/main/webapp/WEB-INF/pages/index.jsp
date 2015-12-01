@@ -102,10 +102,10 @@
 		
 		<script type="text/javascript">
 			$(function(){
-				
-				
+				$("#logOut").click(function(){
+					window.location.href=basePath+"/loginOut";
+				});
 			});
-			
 		</script>
 		
 	</body>

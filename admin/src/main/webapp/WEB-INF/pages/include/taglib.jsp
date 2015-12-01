@@ -18,3 +18,6 @@ request.setAttribute("basePath", basePath);
 %>
 <c:set var="ctxStatic" value="${basePath}/static"/>
 
+<script type="text/javascript">var basePath="${basePath}";</script>
+<script type="text/javascript">var adminPath="${basePath}/admin";</script>
+

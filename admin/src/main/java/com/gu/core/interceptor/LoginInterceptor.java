@@ -8,7 +8,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gu.entity.User;
-import com.gu.util.Constant;
+import static com.gu.util.Constant.*;
 /**
  * 登陆拦截器 
  * LoginInterceptor
@@ -38,14 +38,14 @@ public class LoginInterceptor implements HandlerInterceptor{
 		 //请求的路径
 		String contextPath=request.getContextPath();
         String  url=request.getServletPath().toString();
-        HttpSession session = request.getSession();
-        System.out.println("loginInterceptor");
-        User user = (User)session.getAttribute(Constant.USER_SESSION_KEY);
-       /* if(user == null){
-        	response.sendRedirect("/login");
+        System.out.println("请求的url："+url);
+        User user = (User)request.getSession().getAttribute(SESSION_USER_KEY);
+        if(user != null){
+        	return true;
+        }else{
+        	response.sendRedirect(contextPath+"/login");
         	return false;
-        }*/
-		return true;
+        }
 	}
 
 }
