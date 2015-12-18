@@ -43,7 +43,7 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
+								<a href="#">home</a>
 							</li>
 							<li class="active">Dashboard</li>
 						</ul><!-- /.breadcrumb -->
@@ -55,18 +55,6 @@
 						<div class="ace-settings-container" id="ace-settings-container">
 							<%@include file="/WEB-INF/pages/include/setting.jsp" %>
 						</div><!-- /.ace-settings-container -->
-
-						<!-- /section:settings.box -->
-						<div class="page-header">
-							<h1>
-								Dashboard
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									overview &amp; stats
-								</small>
-							</h1>
-						</div><!-- /.page-header -->
-
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- page content starts -->
@@ -94,5 +82,16 @@
 			myChart2.setDataXML(dataXml);
 			myChart2.render("chart_div");
 		</script>
+		
+		<script type="text/javascript">
+			$(function(){
+				
+				
+			});
+		</script>
+		
+	
+		
+		
 	</body>
 </html>

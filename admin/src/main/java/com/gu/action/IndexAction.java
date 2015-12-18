@@ -14,12 +14,12 @@ public class IndexAction {
 	}
 	
 	
-	@RequestMapping("/table")
+	@RequestMapping("/table/table")
 	public String table(){
 		return "table";
 	}
 	
-	@RequestMapping("/jqgrid")
+	@RequestMapping("/table/jqgrid")
 	public String jqgrid(){
 		return "jqgrid";
 	}
@@ -29,17 +29,17 @@ public class IndexAction {
 		return "email";
 	}
 	
-	@RequestMapping("/fusionchart")
+	@RequestMapping("/chart/fusionchart")
 	public String fusionchart(){
 		return "fusionchart";
 	}
 	
-	@RequestMapping("/echart")
+	@RequestMapping("/chart/echart")
 	public String echart(){
 		return "echart";
 	}
 	
-	@RequestMapping("/treeview")
+	@RequestMapping("/permission/treeview")
 	public String treeview(){
 		return "treeview";
 	}

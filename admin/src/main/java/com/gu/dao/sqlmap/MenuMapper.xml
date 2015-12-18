@@ -14,7 +14,7 @@
     </sql>
     
     <select id="queryMenuByUserId" parameterType="int" resultType="Menu">
-    	select DISTINCT m.url,m.model,m.name,m.icon
+    	select DISTINCT m.url,m.model,m.name,m.icon,m.parent_id as parentId
         from sys_menu m
 		LEFT JOIN sys_role_menu rm on rm.menu_id = m.id
 		LEFT JOIN sys_role r on r.id = rm.role_id

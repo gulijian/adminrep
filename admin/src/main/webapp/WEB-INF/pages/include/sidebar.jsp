@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
 	try {
 		ace.settings.check('sidebar', 'fixed');
@@ -7,80 +8,29 @@
 </script>
 
 <ul class="nav nav-list">
-	<li class="">
-		<a href="#" class="dropdown-toggle">
-			 <i class="menu-icon fa fa-desktop"></i> 
-			 <span class="menu-text">Chart &amp; </span>
-			 <b class="arrow fa fa-angle-down"></b>
-		</a> 
-		<b class="arrow"></b>
-		<ul class="submenu">
+	<c:forEach var="pmenu" items="${pmenuList}">
 			<li class="">
-				<a href="${basePath}/admin/fusionchart" > 
-					<i class="menu-icon fa fa-caret-right"></i> fusionchart 
-				</a>
-			    <b class="arrow"></b>
-			</li>
-			<li class="">
-				<a href="${basePath}/admin/echart"> 
-					<i class="menu-icon fa fa-caret-right"></i> echart
-				</a> 
-				<b class="arrow"></b>
-			</li>
-	 	</ul>
-	</li>
-
-	<li class="active open">
-		<a href="#" class="dropdown-toggle"> 
-			<i class="menu-icon fa fa-list"></i> 
-			<span class="menu-text">Tables </span>
-		    <b class="arrow fa fa-angle-down"></b>
-		</a>
-		<b class="arrow"></b>
-		<ul class="submenu">
-			<li class="">
-				<a href="${basePath}/admin/treeview"> 
-					<i class="menu-icon fa fa-caret-right"></i> treeview
-				</a> 
-				<b class="arrow"></b>
-			</li>
-			<li class="active">
-				<a href="${basePath}/admin/jqgrid" id="jqgrid"> 
-					<i class="menu-icon fa fa-caret-right"></i> jqGrid
-				</a> 
-				<b class="arrow"></b>
-			</li>
-			<li>
-				<a href="${basePath}/admin/table" id="jqgrid"> 
-					<i class="menu-icon fa fa-caret-right"></i> table
-				</a> 
-				<b class="arrow"></b>
-			</li>
-		</ul>
-	</li>
-
-	<li class="">
-		<a href="#" class="dropdown-toggle">
-			 <i class="menu-icon fa fa-pencil-square-o"></i>
-			 <span class="menu-text">Forms </span> 
-			 <b class="arrow fa fa-angle-down"></b>
-		</a>
-	    <b class="arrow"></b>
-		<ul class="submenu">
-			<li class="">
-				<a href="${basePath}/admin/form"> 
-					<i class="menu-icon fa fa-caret-right"></i> form
-				</a>
-			    <b class="arrow"></b>
-			</li>
-			<li class="">
-				<a href="${basePath}/admin/email">
-					 <i class="menu-icon fa fa-caret-right"></i>email
-				</a>
-			    <b class="arrow"></b>
-			</li>
-		</ul>
-	</li>
+			<a href="#" class="dropdown-toggle"> 
+				<i class="menu-icon fa ${pmenu.icon}"></i> 
+				<span class="menu-text">${pmenu.name} </span>
+			    <b class="arrow fa fa-angle-down"></b>
+			</a>
+			<b class="arrow"></b>
+			<ul class="submenu">
+				<c:forEach var="submenu" items="${smenuList}">
+					<c:if test="${submenu.model==pmenu.model}"><!-- 子菜单属于父菜单模块 -->
+						<li class="">
+							<a href="${basePath}/${submenu.url}"> 
+								<i class="menu-icon fa fa-caret-right"></i> 
+								<span id="${submenu.name}">${submenu.name}</span>
+							</a> 
+							<b class="arrow"></b>
+						</li>
+					</c:if>
+				</c:forEach>
+			</ul>
+		</li>
+	</c:forEach>
 </ul>
 <!-- /.nav-list -->
 
@@ -99,3 +49,9 @@
 	} catch (e) {
 	}
 </script>
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 package com.gu.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,7 +18,9 @@ import com.gu.entity.User;
 import com.gu.service.MenuService;
 import com.gu.service.RoleService;
 import com.gu.service.UserService;
+
 import static com.gu.util.Constant.*;
+
 import com.gu.util.StringUtils;
 
 @Controller("loginAction")
@@ -45,6 +48,8 @@ public class LoginAction extends BaseAction{
 	public String logined(HttpServletRequest request){
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		List<Menu> pmenuList = new ArrayList<Menu>();//用户拥有的父级菜单列表
+		List<Menu> smenuList = new ArrayList<Menu>();//用户拥有的子级菜单列表
 		if(StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password)){
 			password = StringUtils.md5Base64(password);
 			//根据用户名和密码查询用户
@@ -54,6 +59,19 @@ public class LoginAction extends BaseAction{
 				session.setAttribute(SESSION_USER_KEY, user);
 				//查询用户拥有的菜单列表
 				List<Menu> menuList = menuService.queryMenuByUserId(user.getId());
+				if(menuList != null){
+					for (Menu menu : menuList) {
+						if(StringUtils.isNotEmpty(menu.getParentId())){
+							if(menu.getParentId().equals("1")){//
+								pmenuList.add(menu);
+							}else{
+								smenuList.add(menu);
+							}
+						}
+					}
+				}
+				session.setAttribute(SESSION_P_MENU_KEY, pmenuList);
+				session.setAttribute(SESSION_S_MENU_KEY, smenuList);
 				//用户拥有的菜单列表放入session中
 				session.setAttribute(SESSION_MENU_KEY, menuList);
 				//查询用户拥有的角色列表

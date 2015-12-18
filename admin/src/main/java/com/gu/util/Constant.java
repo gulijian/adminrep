@@ -13,6 +13,10 @@ public  class Constant {
 	public final static String SESSION_USER_KEY="currentUser";
 	//菜单列表
 	public final static String SESSION_MENU_KEY="menuList";
+	//父级菜单列表
+	public final static String SESSION_P_MENU_KEY = "pmenuList";
+	//父级的子菜单列表
+	public final static String SESSION_S_MENU_KEY = "smenuList";
 	//角色列表
 	public final static String SESSIOIN_ROLE_KEY="roleList";
 	
