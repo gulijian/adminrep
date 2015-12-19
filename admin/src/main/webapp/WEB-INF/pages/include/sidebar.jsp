@@ -9,7 +9,7 @@
 
 <ul class="nav nav-list">
 	<c:forEach var="pmenu" items="${pmenuList}">
-			<li class="">
+			<li class="" >
 			<a href="#" class="dropdown-toggle"> 
 				<i class="menu-icon fa ${pmenu.icon}"></i> 
 				<span class="menu-text">${pmenu.name} </span>
@@ -19,10 +19,10 @@
 			<ul class="submenu">
 				<c:forEach var="submenu" items="${smenuList}">
 					<c:if test="${submenu.model==pmenu.model}"><!-- 子菜单属于父菜单模块 -->
-						<li class="">
+						<li class="" id="${submenu.name}">
 							<a href="${basePath}/${submenu.url}"> 
 								<i class="menu-icon fa fa-caret-right"></i> 
-								<span id="${submenu.name}">${submenu.name}</span>
+								<span>${submenu.name}</span>
 							</a> 
 							<b class="arrow"></b>
 						</li>

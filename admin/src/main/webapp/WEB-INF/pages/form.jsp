@@ -14,57 +14,39 @@
 	</head>
 
 	<body class="no-skin">
-		<!-- #section:basics/navbar.layout -->
+		<!-- 头部开始-->
 		<div id="navbar" class="navbar navbar-default">
  		 	<%@include file="/WEB-INF/pages/include/head.jsp" %>  
 		</div>
-		<!-- /section:basics/navbar.layout -->
+		<!-- 头部结束-->
+		
+		<!-- 主容器开始 -->
 		<div class="main-container" id="main-container">
 			<script type="text/javascript">
 				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
 			</script>
 
-			<!-- #section:basics/sidebar -->
+			<!-- 左侧菜单开始-->
 			<div id="sidebar" class="sidebar responsive">
 				<%@include file="/WEB-INF/pages/include/sidebar.jsp" %>
 			</div>
-
-			<!-- /section:basics/sidebar -->
+			<!-- 左侧菜单结束-->
+			
+			<!-- 内容容器开始 -->
 			<div class="main-content">
 				<div class="main-content-inner">
-					<!-- #section:basics/content.breadcrumbs -->
-					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
-
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-							<li class="active">Dashboard</li>
-						</ul><!-- /.breadcrumb -->
-					</div>
-
-					<!-- /section:basics/content.breadcrumbs -->
+					<!-- 标题导航开始 -->
+					<%@include file="/WEB-INF/pages/include/breadCrumb.jsp" %>
+					<!-- 标题导航结束 -->
+					
+					<!-- 页面内容开始 -->
 					<div class="page-content">
-						<!-- #section:settings.box -->
+						<!-- 肤色设置开始 -->
 						<div class="ace-settings-container" id="ace-settings-container">
 							<%@include file="/WEB-INF/pages/include/setting.jsp" %>
-						</div><!-- /.ace-settings-container -->
-
-						<!-- /section:settings.box -->
-						<div class="page-header">
-							<h1>
-								Dashboard
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									overview &amp; stats
-								</small>
-							</h1>
-						</div><!-- /.page-header -->
-
+						</div>
+					    <!-- 肤色设置结束 -->
+					    <!-- 内容主体开始 -->
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- page content start  -->
@@ -105,8 +87,6 @@
 				
 				
 			});
-			
 		</script>
-		
 	</body>
 </html>

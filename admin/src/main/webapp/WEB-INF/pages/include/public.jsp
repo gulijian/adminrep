@@ -47,4 +47,6 @@
 <script src="${ctxStatic}/assets/js/ace/ace.settings-skin.js"></script>
 <script src="${ctxStatic}/assets/js/ace/ace.widget-on-reload.js"></script>
 <script src="${ctxStatic}/assets/js/ace/ace.searchbox-autocomplete.js"></script>
+<!-- 菜单样式，退出 -->
+<script src="${basePath}/js/sidebar.js"></script>
 
