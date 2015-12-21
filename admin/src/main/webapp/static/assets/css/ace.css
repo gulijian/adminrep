@@ -62,9 +62,9 @@ body {
   padding: 8px 20px 24px;
 }
 .page-header {
-  margin: 0 0 12px;
+  margin: 0 0 4px;
   border-bottom: 1px dotted #e2e2e2;
-  padding-bottom: 16px;
+  padding-bottom: 5px;
   padding-top: 7px;
 }
 .page-header h1 {
