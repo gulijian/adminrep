@@ -7,6 +7,7 @@
 	#userform div{float:left;margin-left: 16px;}
 	#userform div input[type='text']{width:130px;height:25px;}
 	#usershow{margin-top:5px;}
+	#btnBox{position:fixed;bottom:10px;right:15px;}
 
 </style>
 <!-- 用户列表框 -->
@@ -51,5 +52,10 @@
 		   		</c:forEach>
 		     </tbody>
 		</table>
+	</div>
+	<div id="btnBox">
+		<button type="button" class="btn btn-info btn-xs">确定</button>
+		&nbsp;&nbsp;&nbsp;
+		<button type="button" class="btn btn-info btn-xs">取消</button>
 	</div>
 </div>
