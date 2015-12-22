@@ -54,6 +54,16 @@ public class JunitApplication {
 		
 	}
 	
+	@Test
+	public void queryList(){
+		List<Menu> menuList = menuService.queryList(new Menu());
+		if(menuList.size()>0){
+			for (Menu menu : menuList) {
+				System.out.println("=="+menu.getName());
+			}
+		}
+	}
+	
 	
 	
 	

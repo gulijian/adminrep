@@ -300,8 +300,8 @@
 		$(function(){
 			//checkbox 全选，取消
 			$("#con_table #chkAll").click(function(){
-				var chedAll = $(this).attr("checked");
-				if(chedAll == "checked"){
+				var chedAlled = $(this).attr("checked");
+				if(chedAlled == "checked"){
 					$(this).removeAttr("checked");
 					$("#con_table_tbody").find("tr").find(":checkbox").removeAttr("checked");
 					$("#con_table_tbody").find("tr").removeClass("tr_active");

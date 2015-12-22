@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gu.util.UuidUtil;
 
@@ -30,11 +31,15 @@ public class BaseAction {
   	protected HttpServletRequest request;
   	protected HttpSession session;
   	
+  	protected ModelAndView mv;
+  	
+  	
   	@ModelAttribute  
   	public void setReqAndRes(HttpServletRequest request, HttpServletResponse response,HttpSession session){  
   	    this.response= response;  
   	    this.request = request;
   	    this.session = session;
+  	    mv = new ModelAndView();
   	}
     
     /**	【zb】用于测试*/

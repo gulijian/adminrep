@@ -43,8 +43,14 @@ public class IndexAction {
 	public String treeview(){
 		return "treeview";
 	}
+
 	@RequestMapping("/form")
 	public String form(){
 		return "form";
+	}
+	
+	@RequestMapping("/wechat/image")
+	public String image(){
+		return "image";
 	}
 }

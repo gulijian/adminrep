@@ -14,4 +14,15 @@
 		left join sys_user u on ur.user_id = u.id
 		where u.id=#{id} 
 	</select>
+	
+	 <select id="queryList"  resultType="Role">
+    	select
+			id,
+			create_time createTime,
+			description,
+			name
+		FROM
+			sys_role
+		order by create_time
+    </select>
 </mapper>

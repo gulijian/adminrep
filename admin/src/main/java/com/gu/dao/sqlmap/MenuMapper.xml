@@ -22,4 +22,17 @@
 		LEFT JOIN sys_user u on ur.user_id = u.id
 		where u.id=#{id}
     </select>
+    
+     <select id="queryList"  resultType="Menu">
+    	select
+			id,
+			name,
+			parent_id parentId,
+		    sort
+		FROM
+			sys_menu
+		where
+			parent_id is not null
+		order by sort
+    </select>
 </mapper>

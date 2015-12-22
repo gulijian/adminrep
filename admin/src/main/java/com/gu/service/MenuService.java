@@ -26,8 +26,4 @@ public class MenuService extends BaseService<MenuMapper, Menu>{
 		return mapper.queryMenuByUserId(userId);
 	}
 	
-	
-	
-	
-
 }
