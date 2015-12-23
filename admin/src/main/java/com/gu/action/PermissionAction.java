@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.pagehelper.PageInfo;
+import com.gu.core.PageParam;
+import com.gu.core.Params;
 import com.gu.core.action.BaseAction;
 import com.gu.entity.Menu;
 import com.gu.entity.Role;
@@ -57,9 +60,12 @@ public class PermissionAction  extends BaseAction{
 	}
 	
 	@RequestMapping("/user")
-	public ModelAndView user(){
-		List<User> userLst = userService.queryList(new User());
+	public ModelAndView user(Params params){
+		params.setOrder("create_time");
+		List<User> userLst = userService.queryListWithPage(params);
+		int count = userService.count(params);
 		mv.addObject("userLst", userLst);
+		mv.addObject("itemCount", count);
 		mv.setViewName("permission/user");
 		return mv;
 	}
@@ -73,9 +79,9 @@ public class PermissionAction  extends BaseAction{
 	}
 	
 	@RequestMapping("/distribute")
-	public ModelAndView distribute(){
-		List<User> userLst = userService.queryList(new User());
-		mv.addObject("userLst", userLst);
+	public ModelAndView distribute(PageParam pageParam){
+		PageInfo<User> pageInfo = userService.queryListPageInfo(new User(), pageParam);
+		mv.addObject("pageInfo", pageInfo);
 		mv.setViewName("permission/distribution");
 		return mv;
 	}

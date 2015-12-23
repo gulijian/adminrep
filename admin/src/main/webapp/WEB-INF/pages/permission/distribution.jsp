@@ -8,12 +8,15 @@
 	#userform div input[type='text']{width:130px;height:25px;}
 	#usershow{margin-top:5px;}
 	#btnBox{position:fixed;bottom:10px;right:15px;}
+	#pageBox{position: relative; left: 10px;top:-30px;}
 
 </style>
 <!-- 用户列表框 -->
 <div id="userDialog">
 	<div id="userform">
-		<form action="#" method="post">
+		<form action="${basePath}/admin/permission/distribute" method="post" id="searchForm">
+			 <input id="pageNum" name="pageNum" type="hidden" value="${pageInfo.pageNum}"/>
+   			 <input id="pageSize" name="pageSize" type="hidden" value="${pageInfo.pageSize}"/>
 			<div>
 				<label>用户名:</label>	
 				<input type="text" id="username" placeholder="用户名">
@@ -28,7 +31,7 @@
 		</form>
 	</div>	
 	<div id="usershow">
-		<table class="table table-bordered">
+		<table class="table table-bordered table-striped table-condensed">
 			<thead>
 			      <tr>
 			      	 <th class="center">
@@ -40,7 +43,7 @@
 			      </tr>
 	  	   </thead>
 		   <tbody>
-		   		<c:forEach var="user" items="${userLst}">
+		   		<c:forEach var="user" items="${pageInfo.list}">
 		   			 <tr>
 				      	 <td class="center">
 							<input type="checkbox" value="1">
@@ -53,9 +56,20 @@
 		     </tbody>
 		</table>
 	</div>
+	<div id="pagebox">
+		 ${gu:pageStr(pageInfo)}
+	</div>
 	<div id="btnBox">
 		<button type="button" class="btn btn-info btn-xs">确定</button>
 		&nbsp;&nbsp;&nbsp;
 		<button type="button" class="btn btn-info btn-xs">取消</button>
 	</div>
 </div>
+<script type="text/javascript">
+	function page(n, s) {
+		  $("#pageNum").val(n);
+          $("#pageSize").val(s);
+          $("#searchForm").submit();
+          return false;
+	}
+</script>

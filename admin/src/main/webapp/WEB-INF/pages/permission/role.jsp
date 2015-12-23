@@ -227,7 +227,7 @@
 					     shadeClose: true,
 					     shade: 0.8,
 					     scrollbar:false,
-					     area: ['550px', '500px'],
+					     area: ['670px', '510px'],
 					     content: 'distribute' //iframe的url
 					}); 
 					
@@ -250,5 +250,6 @@
 		}
 		
 	</script>
+
 </body>
 </html>

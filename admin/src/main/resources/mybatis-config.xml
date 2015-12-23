@@ -18,7 +18,9 @@
     </settings>
     
     <typeAliases>
+    	<typeAlias type="com.gu.core.Params" alias="Params"/>
     	<package name="com/gu/entity"/>
     </typeAliases>
+    
 	
 </configuration>

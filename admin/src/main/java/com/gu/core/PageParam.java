@@ -3,12 +3,12 @@ package com.gu.core;
 
 
 /**
- * 分页参数类
+ * 分页参数类(PageHelper)
  */
 public class PageParam {
-    private String pageNum = "1"; //页码
-    private Integer pageSize = 15; //每一页大小
-    private String orderBy; //排序的字符串
+    private String pageNum = "1";  //页码 
+    private Integer pageSize = 10; //每一页大小
+    private String orderBy;        //排序的字符串
 
 
     public Integer getPageNum() {
@@ -32,7 +32,7 @@ public class PageParam {
         this.pageSize = pageSize;
     }
 
-    public String getOrderBy() {
+	public String getOrderBy() {
         return orderBy;
     }
 

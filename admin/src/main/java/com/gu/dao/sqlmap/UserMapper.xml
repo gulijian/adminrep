@@ -30,4 +30,56 @@
 		order by create_time
     </select>
     
+    
+    <select id="queryListWithPage" parameterType="Params"  resultType="User">
+    	select
+			id,
+			account,
+			create_time createTime,
+			password,
+			address,
+			mobile,
+			is_delete isDelete,
+			username
+		FROM
+			sys_user
+		<trim prefix="where" prefixOverrides="and | or">  
+			<if test="keyword !=null and keyword !=''">
+				username = #{keyword}
+			</if>
+		</trim>
+		ORDER BY ${order}
+		LIMIT #{pageNo} ,#{pageSize};	
+    </select>
+    
+    <select id="count" parameterType="Params"  resultType="int">
+    	select
+			count(1)
+		FROM
+			sys_user
+		<trim prefix="where" prefixOverrides="and | or">  
+			<if test="keyword !=null and keyword !=''">
+				username = #{keyword}
+			</if>
+		</trim>
+		ORDER BY ${order}
+		LIMIT #{pageNo} ,#{pageSize};	
+    </select>
+    
+    <select id="queryListPageInfo"  resultType="User">
+    	select
+			id,
+			account,
+			create_time createTime,
+			password,
+			address,
+			mobile,
+			is_delete isDelete,
+			username
+		FROM
+			sys_user
+		order by create_time
+    </select>
+    
+    
 </mapper>

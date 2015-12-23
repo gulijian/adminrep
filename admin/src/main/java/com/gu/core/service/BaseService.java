@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.gu.core.PageParam;
+import com.gu.core.Params;
 import com.gu.core.dao.BaseMapper;
 import com.gu.util.StringUtils;
 
@@ -38,21 +39,37 @@ public class BaseService <D extends BaseMapper <T>, T> {
         return mapper.queryList(entity);
     }
 
-
-
+    /**
+     * 使用e-page.js分页查询
+     * @param entity
+     * @return List<T>
+     */
+    public List<T> queryListWithPage(Params params){
+    	return mapper.queryListWithPage(params);
+    }
+    
+    /**
+     * 使用e-page.js分页查询求总数
+     * @param entity
+     * @return List<T>
+     */
+    public int count(Params params){
+    	return mapper.count(params);
+    }
+    
     /**
      * 分页查询列表 pageHelper PageInfo 分页参数，起始页码 每一页的大小， 排序
      * @param entity
      * @param pageParam
      * @return
      */
-    public PageInfo<T> queryListWithPage (T entity, PageParam pageParam) {
+    public PageInfo<T> queryListPageInfo (T entity, PageParam pageParam) {
         //判断是否含有排序的字符串
         if (StringUtils.isNotEmpty(pageParam.getOrderBy())) {
             PageHelper.orderBy(pageParam.getOrderBy());
         }
         PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize());
-        List<T> resultList = mapper.queryList(entity);
+        List<T> resultList = mapper.queryListPageInfo(entity);
         return new PageInfo<T>(resultList);
     }
 

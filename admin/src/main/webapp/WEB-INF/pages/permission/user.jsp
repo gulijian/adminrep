@@ -11,9 +11,12 @@
 	<meta http-equiv="description" content="This is my page">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   	<%@include file="/WEB-INF/pages/include/public.jsp" %>
+  	<!-- 页面 css -->
+  	<link rel="stylesheet" href="${basePath}/js/page/e-page.css" >
   	<!-- 页面 js -->
   	<script  type="text/javascript" src="${basePath}/static/My97DatePicker/WdatePicker.js"></script>
 	<script  type="text/javascript" src="${basePath}/static/layer-2.x/layer.js"></script>
+	<script  type="text/javascript" src="${basePath}/js/page/e-page.js"></script>
 	<style type="text/css">
 		#con_table #con_table_tbody tr:hover{background:#B5B7B9;}
 		#con_table input[type="checkbox"]{width: 19px;height: 19px;background: white;color: green;}
@@ -153,28 +156,8 @@
 								</tbody>
 							</table>
 						</div>
-						<!-- 分页 start -->
-						<div class="col-xs-12">
-							<nav>
-							  <ul class="pagination">
-							    <li>
-							      <a href="#" aria-label="Previous">
-							        <span aria-hidden="true">&laquo;</span>
-							      </a>
-							    </li>
-							    <li><a href="#">1</a></li>
-							    <li><a href="#">2</a></li>
-							    <li><a href="#">3</a></li>
-							    <li><a href="#">4</a></li>
-							    <li><a href="#">5</a></li>
-							    <li>
-							      <a href="#" aria-label="Next">
-							        <span aria-hidden="true">&raquo;</span>
-							      </a>
-							    </li>
-							  </ul>
-							</nav>
-						</div>
+						<!-- 分页  -->
+						<div class="epage"></div>
 					</div>
 					<!-- 内容主体结束 -->
 				</div>
@@ -267,6 +250,25 @@
 				  }
 			})
 		})
+	</script>
+		<script type="text/javascript">
+		$(function(){
+			$(".epage").tzPage("50", {
+				num_edge_entries : 1, //边缘页数
+				num_display_entries :4, //主体页数
+				num_edge_entries:5,
+				current_page:0,
+				showGo:true,
+				showSelect:true,
+				items_per_page : 10, //每页显示X项
+				prev_text : "前一页",
+				next_text : "后一页",
+				callback : function(pageNo,psize){//回调函数
+					alert(pageNo+psize);
+				}
+			});
+		});
+	
 	</script>
 </body>
 </html>

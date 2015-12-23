@@ -1,0 +1,12 @@
+/*信息录入底部框架设置*/
+.xxlr_btm{width:100%;height:55px;color:#fff;text-align:center;line-height:55px;position:relative;bottom:0px;}
+.dataTables_paginate{position: relative;height: 35px;}
+.tzPage{font-size:16px;margin-top: 10px;float: right;margin-left: 10px;}
+.tzPage a{text-decoration:none;border:solid 1px #ccc;color:#999;}
+.tzPage a,.tzPage span{display:block;float:left;padding:0em 0.5em;margin-right:5px;margin-bottom:5px;min-width:1em;text-align:center;line-height: 26px;height: 26px;}
+.tzPage .current{background:#e5e5e5;color:#999;border:solid 1px #e5e5e5;}
+.tzPage .current.prev,.tzPage .current.next{color:#999;border:1px solid #e5e5e5;background:#fff;}
+.tm_psize_go{margin-right:4px;float:left;height:26px;line-height:26px;position:relative;border:1px solid #e5e5e5;color:#999}
+#tm_pagego{height:26px;width:30px;float:left;text-align:center;border:1px solid #e5e5e5;line-height: 22px;color:#999}
+.sortdesc{border-top:5px solid;width:0px;height:0px;display:inline-block;vertical-align:middle;border-right:5px solid transparent;border-left:5px solid transparent;margin-left:5px;}
+.sortasc{border-bottom:5px solid;width:0px;height:0px;display:inline-block;vertical-align:middle;border-right:5px solid transparent;border-left:5px solid transparent;margin-left:5px;}
