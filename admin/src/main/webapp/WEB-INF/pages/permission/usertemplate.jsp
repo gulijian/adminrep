@@ -3,7 +3,7 @@
 <c:forEach var="user" varStatus="userIndex" items="${userLstTemplate}">
 	<tr>
 		<td class="center">
-			<input type="checkbox" value="1">
+			<input type="checkbox" name="chkItem" value="${user.id}">
 			<c:if test="${userIndex.index==0}"><input type="hidden" id="itemCount" value="${itemCount}"/></c:if>
 		</td>
 		<td>

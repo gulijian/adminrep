@@ -14,7 +14,7 @@
 	<script src="${basePath}/static/assets/js/jquery.js"></script>
 	<script src="${basePath}/static/assets/js/bootstrap.js"/></script>
 	<style type="text/css">
-		.content{height:45%;position:absolute;margin:180px 600px;border:1px solid red;padding:10px 10px;;}
+		.content{height:45%;width:25%;position:absolute;margin:180px 600px;border:1px solid red;padding:10px 10px;;}
 		.row{margin:15px 0px;}
 		.msgTip{border:1px solid red;margin:0px 10px;height:40px; line-height:40px;text-align:center;color:red;}
 		.form-control{height:40px;}

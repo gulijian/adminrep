@@ -35,7 +35,7 @@
 			<thead>
 			      <tr>
 			      	 <th class="center">
-						 <input type="checkbox" value="" id="chkAll">
+						 <input type="checkbox"  id="chkAll">
 					 </th>
 			         <th>编号</th>
 			         <th>用户名</th>
@@ -46,7 +46,7 @@
 		   		<c:forEach var="user" items="${pageInfo.list}">
 		   			 <tr>
 				      	 <td class="center">
-							<input type="checkbox" value="1">
+							<input type="checkbox"  value="${user.id}">
 						 </td>
 				         <td>${user.id}</td>
 				         <td>${user.username}</td>
@@ -60,9 +60,9 @@
 		 ${gu:pageStr(pageInfo)}
 	</div>
 	<div id="btnBox">
-		<button type="button" class="btn btn-info btn-xs">确定</button>
+		<button type="button" class="btn btn-info btn-xs" onclick="btnSure(this);">确定</button>
 		&nbsp;&nbsp;&nbsp;
-		<button type="button" class="btn btn-info btn-xs">取消</button>
+		<button type="button" class="btn btn-info btn-xs" onclick="btnCancel(this);">取消</button>
 	</div>
 </div>
 <script type="text/javascript">
@@ -73,3 +73,26 @@
           return false;
 	}
 </script>
+<script type="text/javascript">
+	function btnSure(obj){
+		var id_array  = [];
+		$("input[type='checkbox']:checked").each(function(){
+			id_array.push($(this).val());
+		});
+		var idstr=id_array.join(',');//将数组元素连接起来以构建一个字符串  
+		alert(idstr);  
+		
+	}
+	
+	function btnCancel(obj){
+		alert("dd");
+		
+	}
+
+
+
+
+</script>
+
+
+

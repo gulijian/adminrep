@@ -18,10 +18,10 @@
 	<script  type="text/javascript" src="${basePath}/static/layer-2.x/layer.js"></script>
 	<script  type="text/javascript" src="${basePath}/js/page/e-page.js"></script>
 	<style type="text/css">
-		#con_table #template_body tr:hover{background:#B5B7B9;}
+		#con_table #template_body tr:hover{background:#ECEFF3;}
 		#con_table input[type="checkbox"]{width: 19px;height: 19px;background: white;color: green;}
 		#con_table input[type="checkbox"]:hover{border:1px solid red;}
-		.tr_active{background:#B5B7B9}
+		.tr_active{background:#ECEFF3;}
 		.epage{position:relative;top:-15px;}
 	</style>
 </head>
@@ -123,7 +123,7 @@
 								<thead>
 									<tr>
 										<th class="center">
-											<input type="checkbox" value="" id="chkAll">
+											<input type="checkbox" id="chkAll" onclick="chkAllCheck();">
 										</th>
 										<th>编号</th>
 										<th>账号</th>
@@ -141,7 +141,7 @@
 									<c:forEach var="user" varStatus="userIndex" items="${userLst}">
 										<tr>
 											<td class="center">
-												<input type="checkbox" value="1">
+												<input type="checkbox" name="chkItem" value="${user.id}">
 											</td>
 											<td>
 												<a href="#">${user.id}</a>
@@ -217,13 +217,13 @@
 					
 				},
 				del:function(){
-					var index = layer.open({
+					delIndex = layer.open({
 							title:'删除提示',
 						    content: '你确认删除吗？',
 						    btn: ['确认', '取消'],
 						    shadeClose: false,
 						    yes: function(){
-						    	layer.close(index);
+						    	del();
 						    }, no: function(){
 						    	
 						    }
@@ -269,6 +269,7 @@
 				url:adminPath+"/permission/usertemplate",
 				success:function(data){
 					$("#template_body").html(data);
+					hh();
 					var itemcount = $("#template_body").find("#itemCount").val();
 					if(callback){//回调函数，搜索
 					   callback(itemcount);
@@ -283,6 +284,51 @@
 			});
 		}
 		
+		function del(){
+			var id_array  = [];
+			$("input[type='checkbox']:checked").each(function(){
+				id_array.push($(this).val());
+			});
+			var idstr=id_array.join(',');//将数组元素连接起来以构建一个字符串  
+			alert(idstr);  
+			
+			
+			layer.close(delIndex);
+		}
 	</script>
+	
+	<script type="text/javascript">
+	 //全反选
+	 function chkAllCheck(){
+		 $("[name = chkItem]:checkbox").each(function () {
+             $(this).prop("checked", !$(this).prop("checked"));
+             if($(this).prop("checked")){
+            	 $(this).parents("tr").addClass("tr_active");
+             }else{
+            	 $(this).parents("tr").removeClass("tr_active");
+             }
+         });
+	 }
+	 
+	 function hh(){
+		 $("#template_body").find("tr").click(function(){
+			  var chked =  $(this).find(":checkbox").prop("checked");
+			  if(chked){//选中状态
+				  $(this).find(":checkbox").prop("checked",false);
+				  $(this).removeClass("tr_active");
+			  }else{
+				  $(this).find(":checkbox").prop("checked",true);
+			  	  $(this).addClass("tr_active");
+			  }
+			  return false;
+		 });
+	 }
+	
+	 hh();
+	</script>
+	
+	
+	
+	
 </body>
 </html>
