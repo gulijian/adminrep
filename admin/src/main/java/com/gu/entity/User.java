@@ -10,6 +10,7 @@ public class User implements java.io.Serializable{
 	private String account;// 账号
 	private String password;// 密码
 	private String username;// 用户名
+	private String sex;//性别 0：男；1：女
 	private int isDelete;//是否删除
 	private String address;//地址
 	private String mobile;//手机号
@@ -97,6 +98,14 @@ public class User implements java.io.Serializable{
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+	
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	public List<Role> getRole() {

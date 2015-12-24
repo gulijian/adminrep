@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,8 +61,9 @@ public class PermissionAction  extends BaseAction{
 	}
 	
 	@RequestMapping("/user")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	public ModelAndView user(Params params){
-		params.setOrder("create_time");
+		params.setOrder("id");
 		List<User> userLst = userService.queryListWithPage(params);
 		int count = userService.count(params);
 		mv.addObject("userLst", userLst);
@@ -69,6 +71,19 @@ public class PermissionAction  extends BaseAction{
 		mv.setViewName("permission/user");
 		return mv;
 	}
+	
+	@RequestMapping("/usertemplate")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	public ModelAndView usertemplate(Params params){
+		params.setOrder("id");
+		List<User> userLst = userService.queryListWithPage(params);
+		int count = userService.count(params);
+		mv.addObject("userLstTemplate", userLst);
+		mv.addObject("itemCount", count);
+		mv.setViewName("permission/usertemplate");
+		return mv;
+	}
+	
 	
 	@RequestMapping("/role")
 	public ModelAndView role(){

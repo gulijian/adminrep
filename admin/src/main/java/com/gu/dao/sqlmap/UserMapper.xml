@@ -39,17 +39,24 @@
 			password,
 			address,
 			mobile,
+			sex,
 			is_delete isDelete,
 			username
 		FROM
 			sys_user
-		<trim prefix="where" prefixOverrides="and | or">  
-			<if test="keyword !=null and keyword !=''">
-				username = #{keyword}
+		<trim prefix="WHERE" prefixOverrides="AND | OR">  
+			<if test="account !=null and account !='' ">
+				username like concat('%', #{account}, '%')
+			</if>
+			<if test="mobile !=null and mobile !='' ">
+				mobile like concat('%', #{mobile}, '%')
+			</if>
+			<if test="sex !=null and sex !='' ">
+				sex = #{sex}
 			</if>
 		</trim>
-		ORDER BY ${order}
-		LIMIT #{pageNo} ,#{pageSize};	
+		order by ${order}
+		limit #{pageNo},#{pageSize};	
     </select>
     
     <select id="count" parameterType="Params"  resultType="int">
@@ -57,13 +64,17 @@
 			count(1)
 		FROM
 			sys_user
-		<trim prefix="where" prefixOverrides="and | or">  
-			<if test="keyword !=null and keyword !=''">
-				username = #{keyword}
+		<trim prefix="WHERE" prefixOverrides="AND | OR">  
+			<if test="account !=null and account !='' ">
+				username like concat('%', #{account}, '%')
+			</if>
+			<if test="mobile !=null and mobile !='' ">
+				mobile like concat('%', #{mobile}, '%')
+			</if>
+			<if test="sex !=null and sex !='' ">
+				sex = #{sex}
 			</if>
 		</trim>
-		ORDER BY ${order}
-		LIMIT #{pageNo} ,#{pageSize};	
     </select>
     
     <select id="queryListPageInfo"  resultType="User">
@@ -73,6 +84,7 @@
 			create_time createTime,
 			password,
 			address,
+			sex,
 			mobile,
 			is_delete isDelete,
 			username

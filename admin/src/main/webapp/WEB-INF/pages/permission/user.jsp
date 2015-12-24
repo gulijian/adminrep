@@ -1,6 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" trimDirectiveWhitespaces="true"%>
 <%@include file="/WEB-INF/pages/include/taglib.jsp" %>
-<!DOCTYPE html">
+<!doctype html>
 <html>
 <head>
    	<title>用户列表</title>
@@ -18,10 +18,11 @@
 	<script  type="text/javascript" src="${basePath}/static/layer-2.x/layer.js"></script>
 	<script  type="text/javascript" src="${basePath}/js/page/e-page.js"></script>
 	<style type="text/css">
-		#con_table #con_table_tbody tr:hover{background:#B5B7B9;}
+		#con_table #template_body tr:hover{background:#B5B7B9;}
 		#con_table input[type="checkbox"]{width: 19px;height: 19px;background: white;color: green;}
 		#con_table input[type="checkbox"]:hover{border:1px solid red;}
 		.tr_active{background:#B5B7B9}
+		.epage{position:relative;top:-15px;}
 	</style>
 </head>
 
@@ -81,11 +82,11 @@
 									  </div>
 									  <div class="form-group">
 									     <label for="startDate">开始日期:</label>
-									     <input style="height:32px;" class="Wdate form-control" id="startDate" type="text" onClick="WdatePicker()">~
+									     <input  style="height:32px;" class="Wdate form-control" type="text" name="startDate" id="startDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endDate\')}'})"    placeholder="请输入开始日期"/>~
 									     <label for="endDate">结束日期:</label>
-									     <input style="height:32px;" class="Wdate form-control" id="startDate" type="text" onClick="WdatePicker()">
+									     <input  style="height:32px;" class="Wdate form-control" type="text" name="endDate" id="endDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate\')}'})"    placeholder="请输入结束日期"/>
 									  </div>
-									  <button type="button" class="btn btn-primary btn-xs">
+									  <button type="button" class="btn btn-primary btn-xs" onclick="search();">
 									  	 <i class="ace-icon fa fa-search bigger-120"></i>查询
 									   </button> 
 									  <button type="button" class="btn btn-primary btn-xs">
@@ -136,7 +137,7 @@
 										<th class="hidden-480">状态</th>
 									</tr>
 								</thead>
-								<tbody id="con_table_tbody">
+								<tbody id="template_body">
 									<c:forEach var="user" varStatus="userIndex" items="${userLst}">
 										<tr>
 											<td class="center">
@@ -206,6 +207,11 @@
 	</div>
 	
 	<script>
+		$(function(){
+			//页面初始化
+			initPage("${itemCount}");
+		});
+	
 		var adminUser = {
 				add:function(){
 					
@@ -224,51 +230,59 @@
 					});
 				}
 		}
-		$(function(){
-			//checkbox 全选，取消
-			$("#con_table #chkAll").click(function(){
-				var chedAlled = $(this).attr("checked");
-				if(chedAlled == "checked"){
-					$(this).removeAttr("checked");
-					$("#con_table_tbody").find("tr").find(":checkbox").removeAttr("checked");
-					$("#con_table_tbody").find("tr").removeClass("tr_active");
-				}else{
-					$(this).attr("checked","checked");
-					$("#con_table_tbody").find("tr").find(":checkbox").attr("checked","checked");
-					$("#con_table_tbody").find("tr").addClass("tr_active");
-				}
-			});
-			//行样式和checkbox样式
-			$("#con_table_tbody").find("tr").bind("click",function(){
-				  var chked =  $(this).find(":checkbox").attr("checked");
-				  if(chked == "checked"){//选中状态
-					  $(this).find(":checkbox").removeAttr("checked");
-					  $(this).removeClass("tr_active");
-				  }else{
-					  $(this).find(":checkbox").attr("checked","checked");
-				  	  $(this).addClass("tr_active");
-				  }
-			})
-		})
-	</script>
-		<script type="text/javascript">
-		$(function(){
-			$(".epage").tzPage("50", {
+		
+		//初始化页面
+		function initPage(itemCount){
+			$(".epage").tzPage(itemCount, {
 				num_edge_entries : 1, //边缘页数
 				num_display_entries :4, //主体页数
 				num_edge_entries:5,
 				current_page:0,
 				showGo:true,
 				showSelect:true,
-				items_per_page : 10, //每页显示X项
+				items_per_page : 12, //每页显示X项
 				prev_text : "前一页",
 				next_text : "后一页",
 				callback : function(pageNo,psize){//回调函数
-					alert(pageNo+psize);
+					loadingTemplate(pageNo,psize);
 				}
 			});
-		});
-	
+		}
+		
+		//点击分页加载回调函数,
+		//如果一个ajax,访问一个同步url
+		function loadingTemplate(pno,psize,callback){
+			var username = $("#name").val();
+			var mobile = $("#mobile").val();
+			var startDate = $("#startDate").val();
+			var endDate = $("#endDate").val();
+			$.ajax({
+				type:"post",
+				data:{
+					  "pageNo":(pno*psize),
+					  "pageSize":psize,
+					  "account":username,
+					  "mobile":mobile,
+					  "startDate":startDate,
+					  "endDate":endDate
+					 },
+				url:adminPath+"/permission/usertemplate",
+				success:function(data){
+					$("#template_body").html(data);
+					var itemcount = $("#template_body").find("#itemCount").val();
+					if(callback){//回调函数，搜索
+					   callback(itemcount);
+					}
+				}
+			});
+		}
+		//搜索
+		function search(){
+			loadingTemplate(0,12,function(itemcount){
+				initPage(itemcount);
+			});
+		}
+		
 	</script>
 </body>
 </html>
