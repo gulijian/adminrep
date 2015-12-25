@@ -24,7 +24,8 @@
 			check: {
 				enable: true,
 				autoCheckTrigger: true,
-				chkStyle: "checkbox"
+				chkStyle: "checkbox",
+				chkboxType:{ "Y" : "ps", "N" : "ps" }
 			},
 			callback: {
 				onCheck: zTreeOnCheck
@@ -35,9 +36,19 @@
 				}
 			}
 		};
-
+		$(document).ready(function(){
+			guAjax.request({
+				path:adminPath,
+				model:"permission",
+				method:"menu",
+				success:function(data){
+					$.fn.zTree.init($("#permission"), setting, data);
+				}
+			});
+		});
+	
 		function zTreeBeforeCheck(treeId, treeNode) {
-			alert(treeId+"==="+treeNode.id+treeNode.pId+treeNode.name);
+			//alert(treeId+"==="+treeNode.id+treeNode.pId+treeNode.name);
 		    return true;
 		};
 
@@ -46,53 +57,21 @@
 	            nodes=treeObj.getCheckedNodes(true),
 	            v="";
 	            for(var i=0;i<nodes.length;i++){
-		            v+=no	des[i].name + ",";
-		            alert(nodes[i].id+"=="+nodes[i].name+nodes[i].pId); //获取选中节点的值
+		            v+=nodes[i].name + ",";
+		            //alert(nodes[i].id+"=="+nodes[i].name+nodes[i].pId); //获取选中节点的值
 	            }
 		  //  alert(treeNode.tId + ", " + treeNode.name + "," + treeNode.checked);
 		};
-
-
-		var code;
-		function setCheck() {
-			var zTree = $.fn.zTree.getZTreeObj("permission"),
-			py = $("#py").attr("checked")? "p":"",
-			sy = $("#sy").attr("checked")? "s":"",
-			pn = $("#pn").attr("checked")? "p":"",
-			sn = $("#sn").attr("checked")? "s":"",
-			type = { "Y":py + sy, "N":pn + sn};
-			zTree.setting.check.chkboxType = type;
-			showCode('setting.check.chkboxType = { "Y" : "' + type.Y + '", "N" : "' + type.N + '" };');
-		}
-		function showCode(str) {
-			//alert(str);
-			if (!code) code = $("#code");
-			code.empty();
-			code.append("<li>"+str+"</li>");
-		}
 		
-		$(document).ready(function(){
-			guAjax.request({
-				path:adminPath,
-				model:"permission",
-				method:"menu",
-				success:function(data){
-					$.fn.zTree.init($("#permission"), setting, data);
-					setCheck();
-					$("#py").bind("change", setCheck);
-					$("#sy").bind("change", setCheck);
-					$("#pn").bind("change", setCheck);
-					$("#sn").bind("change", setCheck);
-				}
-			});
-		});
+		
 	</script>
 	<script type="text/javascript">
 		var index = parent.layer.getFrameIndex(window.name); //得到当前iframe层的索引
 		//角色分配权限
 		function btnSure(){
-			
-			
+			var treeObj = $.fn.zTree.getZTreeObj("permission");
+			var nodes = treeObj.getCheckedNodes(true);
+			alert("11111111"+nodes);
 		}
 		
 		//取消，关闭当前的iframe层
