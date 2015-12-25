@@ -18,10 +18,10 @@
 	<script  type="text/javascript" src="${basePath}/static/layer-2.x/layer.js"></script>
 	<script  type="text/javascript" src="${basePath}/js/page/e-page.js"></script>
 	<style type="text/css">
-		#con_table #template_body tr:hover{background:#ECEFF3;}
+		#con_table #template_body tr:hover{background:#83EEF5;}
 		#con_table input[type="checkbox"]{width: 19px;height: 19px;background: white;color: green;}
 		#con_table input[type="checkbox"]:hover{border:1px solid red;}
-		.tr_active{background:#ECEFF3;}
+		.tr_active{background:#83EEF5;}
 		.epage{position:relative;top:-15px;}
 	</style>
 </head>

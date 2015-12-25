@@ -137,7 +137,7 @@
 									<c:forEach var="role" varStatus="roleindex" items="${roleLst}">
 										<tr>
 											<td class="center">
-												<input type="checkbox" value="1">
+												<input type="checkbox" value="${role.id}">
 											</td>
 											<td>
 												<a href="#">${role.id}</a>
@@ -210,6 +210,7 @@
 					var index = layer.open({
 							title:'删除提示',
 						    content: '你确认删除吗？',
+						    offset: [($(window).height() - 700)/2+'px', ''], //上下垂直居中
 						    btn: ['确认', '取消'],
 						    shadeClose: false,
 						    yes: function(){
@@ -220,6 +221,7 @@
 					});
 				},
 				distributeUser:function(obj){//角色分配给用户
+				    tr_roleId = $(obj).parents("tr").find(":checkbox").val();
 					layer.open({
 						 type: 2,
 					     title: '用户列表',
@@ -228,7 +230,13 @@
 					     shade: 0.8,
 					     scrollbar:false,
 					     area: ['670px', '510px'],
-					     content: 'distribute' //iframe的url
+					     content: 'distribute?roleId='+tr_roleId, //iframe的url
+					     success:function(layero,index){//iframe页面回调函数
+					    	/*  //iframeWin 对象
+					    	 var iframeWin = window[layero.find('iframe')[0]['name']];
+					    	 iframeWin.roleId=tr_roleId;//父页面roleId值传递给iframe页面
+					    	 console.log(layero, index); */
+					     }
 					}); 
 					
 				},

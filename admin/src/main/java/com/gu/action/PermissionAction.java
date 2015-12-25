@@ -3,12 +3,14 @@ package com.gu.action;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -93,13 +95,29 @@ public class PermissionAction  extends BaseAction{
 		return mv;
 	}
 	
-	@RequestMapping("/distribute")
-	public ModelAndView distribute(PageParam pageParam){
+	@RequestMapping(value="/distribute")
+	public ModelAndView distribute(@RequestParam(value="roleId",required=false) String roleId  ,PageParam pageParam){
 		PageInfo<User> pageInfo = userService.queryListPageInfo(new User(), pageParam);
 		mv.addObject("pageInfo", pageInfo);
+		mv.addObject("roleId", roleId);//roleId 传递给子页面
 		mv.setViewName("permission/distribution");
 		return mv;
 	}
+	
+	@RequestMapping("/roleDistributeUser")
+	@ResponseBody
+	public void  distributeSure(){
+		String userIds = request.getParameter("userIds");
+		String roleId = request.getParameter("roleId");
+		String[] userIdArr = userIds.split(",");
+		Map<String,String> map = new HashMap<String,String>();
+		for(int i=0;i<userIdArr.length;i++){//
+			map.put("roleId", roleId);
+			map.put("userId", userIdArr[i]);
+			userService.roleDistributeUser(map);
+		}
+	}
+	
 	
 	@RequestMapping("/authorize")
 	public String authorize(){

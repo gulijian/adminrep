@@ -74,24 +74,28 @@
 	}
 </script>
 <script type="text/javascript">
+	var index = parent.layer.getFrameIndex(window.name); //得到当前iframe层的索引
+    //确定，保存角色分配给用户
 	function btnSure(obj){
 		var id_array  = [];
 		$("input[type='checkbox']:checked").each(function(){
 			id_array.push($(this).val());
 		});
 		var idstr=id_array.join(',');//将数组元素连接起来以构建一个字符串  
-		alert(idstr);  
-		
+		$.ajax({
+			type:"post",
+			url:adminPath+"/permission/roleDistributeUser",
+			data:{"roleId":"${roleId}","userIds":idstr},
+		    success:function(data){
+		    	parent.layer.close(index); //再执行关闭     
+		    }
+		});
 	}
 	
+    //取消，关闭iframe层
 	function btnCancel(obj){
-		alert("dd");
-		
+		parent.layer.close(index); //再执行关闭     
 	}
-
-
-
-
 </script>
 
 

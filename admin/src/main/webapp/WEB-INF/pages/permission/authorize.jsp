@@ -6,9 +6,17 @@
 <!-- page js -->
 <script  type="text/javascript" src="${basePath}/static/zTree/js/jquery.ztree.core-3.5.js"></script>
 <script  type="text/javascript" src="${basePath}/static/zTree/js/jquery.ztree.excheck-3.5.js"></script>
+<style type="text/css">
+	#btnBox{position:fixed;bottom:10px;right:15px;}
+</style>
 <!-- treebox -->
 <div class="treebox left">
 	<ul id="permission" class="ztree"></ul>
+</div>
+<div id="btnBox">
+	<button type="button" class="btn btn-info btn-xs" onclick="btnSure(this);">确定</button>
+	&nbsp;&nbsp;&nbsp;
+	<button type="button" class="btn btn-info btn-xs" onclick="btnCancel(this);">取消</button>
 </div>
 
 <script>
@@ -38,7 +46,7 @@
 	            nodes=treeObj.getCheckedNodes(true),
 	            v="";
 	            for(var i=0;i<nodes.length;i++){
-		            v+=nodes[i].name + ",";
+		            v+=no	des[i].name + ",";
 		            alert(nodes[i].id+"=="+nodes[i].name+nodes[i].pId); //获取选中节点的值
 	            }
 		  //  alert(treeNode.tId + ", " + treeNode.name + "," + treeNode.checked);
@@ -78,4 +86,17 @@
 				}
 			});
 		});
+	</script>
+	<script type="text/javascript">
+		var index = parent.layer.getFrameIndex(window.name); //得到当前iframe层的索引
+		//角色分配权限
+		function btnSure(){
+			
+			
+		}
+		
+		//取消，关闭当前的iframe层
+		function btnCancel(){
+			parent.layer.close(index); //关闭当前的iframe层
+		}
 	</script>

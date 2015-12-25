@@ -10,7 +10,6 @@ public class PageUtils {
 
     //<ul><li class="disabled"><a href="javascript:">&#171; 上一页</a></li><li class="active"><a href="javascript:">1</a></li><li><a href="javascript:page(2,15)">2</a></li><li><a href="javascript:page(3,15)">3</a></li><li><a href="javascript:page(2,15)">下一页 &#187;</a></li><li class="disabled controls"><a href="javascript:void(0);">当前第 <input type="text" value="1" onkeypress="var e=window.event||this;var c=e.keyCode||e.which;if(c==13)page(this.value,15);" onclick="this.select();"/> 页 / 共 3 页， 共 33 条</a></li></ul>
     public static String pageStr (PageInfo pageInfo) {
-
         StringBuilder sb = new StringBuilder("<nav><ul class='pagination'>");
         //判断当前页是不是首页
         if (pageInfo.isIsFirstPage()) {
@@ -53,7 +52,6 @@ public class PageUtils {
         sb.append(" 页， 共 ");
         sb.append(pageInfo.getTotal());
         sb.append(" 条</a></li></ul></nav>");
-        System.out.println(sb.toString());
         return sb.toString();
     }
 
