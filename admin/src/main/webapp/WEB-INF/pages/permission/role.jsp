@@ -221,7 +221,7 @@
 					});
 				},
 				distributeUser:function(obj){//角色分配给用户
-				    tr_roleId = $(obj).parents("tr").find(":checkbox").val();
+				    var tr_roleId = $(obj).data("opid");
 					layer.open({
 						 type: 2,
 					     title: '用户列表',
@@ -241,8 +241,7 @@
 					
 				},
 				authorize:function(obj){//角色授权
-					/* var $obj = $(obj);
-					alert($obj.data("opid")); */
+					var tr_roleId = $(obj).data("opid");
 					layer.open({
 						 type: 2,
 					     title: '角色授权',
@@ -251,7 +250,7 @@
 					     shade: 0.8,
 					     scrollbar:false,
 					     area: ['350px', '420px'],
-					     content: 'authorize' //iframe的url
+					     content: 'authorize?roleId='+tr_roleId //iframe的url
 					}); 
 					
 				}

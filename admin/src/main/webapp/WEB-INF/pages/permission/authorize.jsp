@@ -71,7 +71,23 @@
 		function btnSure(){
 			var treeObj = $.fn.zTree.getZTreeObj("permission");
 			var nodes = treeObj.getCheckedNodes(true);
-			alert("11111111"+nodes);
+			var roleId = "${roleId}";
+			var menuIdStr = "";
+			for(var i=0;i<nodes.length;i++){
+				menuIdStr+=nodes[i].id + ","; //各个节点的id值
+	         }
+			roleAuthorize(roleId,menuIdStr);
+		}
+		//角色授权保存操作
+		function roleAuthorize(roleId,menuIdStr){
+			$.ajax({
+				type:"post",
+				url:adminPath+"/permission/roleAuthorize",
+				data:{"roleId":roleId,"menuIds":menuIdStr},
+			    success:function(data){
+			    	parent.layer.close(index); //再执行关闭     
+			    }
+			});
 		}
 		
 		//取消，关闭当前的iframe层
@@ -79,3 +95,5 @@
 			parent.layer.close(index); //关闭当前的iframe层
 		}
 	</script>
+	
+	

@@ -104,6 +104,7 @@ public class PermissionAction  extends BaseAction{
 		return mv;
 	}
 	
+	//角色分配给用户
 	@RequestMapping("/roleDistributeUser")
 	@ResponseBody
 	public void  distributeSure(){
@@ -120,9 +121,23 @@ public class PermissionAction  extends BaseAction{
 	
 	
 	@RequestMapping("/authorize")
-	public String authorize(){
-		return "permission/authorize";
+	public ModelAndView authorize(@RequestParam("roleId") String roleId){
+		mv.addObject("roleId", roleId);
+		mv.setViewName("permission/authorize");
+		return mv;
 	}
-
-
+	
+	//角色授权
+	@RequestMapping("roleAuthorize")
+	public void roleAuthorize(){
+		Map<String,String> map = new HashMap<String,String>();
+		String roleId = request.getParameter("roleId");
+		String menuIds = request.getParameter("menuIds");
+		String[] menuIdsArr = menuIds.split(",");
+		for(int i=0;i<menuIdsArr.length;i++){
+			map.put("roleId", roleId);
+			map.put("menuId", menuIdsArr[i]);
+			roleService.roleAuthorize(map);
+		}
+	}
 }

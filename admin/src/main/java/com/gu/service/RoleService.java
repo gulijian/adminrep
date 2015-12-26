@@ -1,6 +1,7 @@
 package com.gu.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,18 @@ public class RoleService extends BaseService<RoleMapper, Role>{
 		return mapper.queryRoleByUserId(UserId);
 	}
 	
-	
-
+	/**
+	 * 
+	 * 角色授权
+	 * 方法名：roleAuthorize
+	 * 创建人：gulj
+	 * 时间：2015年12月26日-上午10:53:06 
+	 * @param map
+	 * @return int
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	public int roleAuthorize(Map<String,String> map){
+		return mapper.roleAuthorize(map);
+	}
 }

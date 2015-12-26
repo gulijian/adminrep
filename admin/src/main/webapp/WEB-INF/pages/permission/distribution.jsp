@@ -14,7 +14,7 @@
 <!-- 用户列表框 -->
 <div id="userDialog">
 	<div id="userform">
-		<form action="${basePath}/admin/permission/distribute" method="post" id="searchForm">
+		<form action="" method="post" id="searchForm">
 			 <input id="pageNum" name="pageNum" type="hidden" value="${pageInfo.pageNum}"/>
    			 <input id="pageSize" name="pageSize" type="hidden" value="${pageInfo.pageSize}"/>
 			<div>
@@ -69,6 +69,7 @@
 	function page(n, s) {
 		  $("#pageNum").val(n);
           $("#pageSize").val(s);
+          $("#searchForm").attr("action",adminPath+"/permission/distribute?roleId="+"${roleId}");
           $("#searchForm").submit();
           return false;
 	}
@@ -85,7 +86,7 @@
 		$.ajax({
 			type:"post",
 			url:adminPath+"/permission/roleDistributeUser",
-			data:{"roleId":"${roleId}","userIds":idstr},
+			data:{"roleId":roleId,"userIds":idstr},
 		    success:function(data){
 		    	parent.layer.close(index); //再执行关闭     
 		    }
