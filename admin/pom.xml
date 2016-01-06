@@ -246,6 +246,12 @@
             <artifactId>guava</artifactId>
             <version>17.0</version>
         </dependency>
+        <!-- mongodb 依赖包 -->
+        <dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>1.7.1.RELEASE</version>
+		</dependency>
     </dependencies>
 
     <build>

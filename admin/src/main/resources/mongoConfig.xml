@@ -1,0 +1,20 @@
+<?xml version="1.0"  encoding="GB2312" ?>
+<charge_config>	
+		<mongodbs>
+		  <mongodb>	
+		     <host>127.0.0.1</host>
+		     <port>27017</port>
+		  </mongodb>
+		  <mongoDbName>m_admin</mongoDbName>
+		  <connectionsPerHost>100</connectionsPerHost>
+		  <threadConnection>8</threadConnection>
+          <socketKeepAlive>false</socketKeepAlive>
+		  <autoConnectRetry>false</autoConnectRetry>
+		  <slaveOk>false</slaveOk>
+          <mongoisauth>true</mongoisauth> 
+		  <userName>gulj</userName>
+		  <password>gulj1234</password>
+          <validationQuery>dual</validationQuery>
+		  <validationTimeout>300000</validationTimeout>
+		</mongodbs>
+</charge_config>
