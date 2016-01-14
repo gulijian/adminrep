@@ -12,6 +12,9 @@
   <listener>
     <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
   </listener>
+  <listener>
+		<listener-class>com.gu.util.WebConfigListener</listener-class>
+	</listener>
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

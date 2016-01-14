@@ -187,11 +187,12 @@
             <artifactId>shiro-ehcache</artifactId>
             <version>${shiro.version}</version>
         </dependency>
-        <dependency>
+        <!-- 去除shiro 对quartz的依赖，加上则会增加quarz1.6的jar与quarz2.1.7jar冲突 -->
+        <!-- <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-quartz</artifactId>
             <version>${shiro.version}</version>
-        </dependency>
+        </dependency> -->
          <!--jackson的依赖-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -251,6 +252,24 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>1.7.1.RELEASE</version>
+		</dependency>
+		<!-- httpclient  -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.6</version>
+		</dependency>
+		<!-- jsoup -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+		<!--quartz 2.1-->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.1.7</version>
 		</dependency>
     </dependencies>
 

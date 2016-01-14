@@ -75,4 +75,44 @@
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 	
+	
+	<!-- Quartz2.2.1 定时任务 -->
+	<bean id="share" class="com.gu.action.MongoAction" />
+
+	<!-- 定义调用对象和调用对象的方法 -->
+	<bean id="shareDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="share" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="testQuraz" />
+		<!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<!-- quartz-2.x的配置 -->
+	<!-- 定义触发时间 -->
+	<bean id="shareTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="shareDetail" />
+		</property>
+		<!-- 每30秒触发一次 -->
+		<property name="cronExpression">
+			<value>30,59 * * * * ?</value>
+		</property>
+	</bean>
+
+	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
+	<!-- 如果lazy-init='true',则需要实例化该bean才能执行调度程序 -->
+	<bean name="startQuertz2" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="shareTrigger" />
+			</list>
+		</property>
+		<property name="autoStartup" value="true"/>
+	</bean>
+	
 </beans>

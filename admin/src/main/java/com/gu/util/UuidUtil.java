@@ -84,11 +84,11 @@ public class UuidUtil {
 	public static void main(String[] args) {
 //		System.out.println(get32UUID());
 //		System.out.println(UUID.randomUUID().toString().trim().replaceAll("-", ""));
-		for(int i= 0; i < 100; i++){
+		/*for(int i= 0; i < 100; i++){
 			System.out.println(getUniqueId());
-		}
+		}*/
 //		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
-//		System.out.println(getMAC());
+		System.out.println(getMAC());
 //		System.out.println(((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest().getRemoteHost());
 	}
 }

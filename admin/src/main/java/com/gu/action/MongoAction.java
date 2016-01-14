@@ -22,4 +22,18 @@ public class MongoAction {
 		EMogodbUtil.saveImUser(map);
 	}
 
+	/**
+	 * 
+	 * 定时任务
+	 * 方法名：testQuraz
+	 * 创建人：gulj
+	 * 时间：2016年1月14日-下午5:32:47  void
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	public void testQuraz(){
+		System.out.println("定时任务开启");
+		
+	}
+	
 }
